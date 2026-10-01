@@ -1,7 +1,6 @@
 ---
 name: update-github-info
 on:
-  schedule: daily
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,6 +14,9 @@ network:
 tools:
   edit:
   web-fetch:
+  github:
+    mode: gh-proxy
+    github-token: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 safe-outputs:
   create-pull-request:
     title-prefix: "[GitHub Info] "
